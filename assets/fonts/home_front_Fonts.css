@@ -1,0 +1,161 @@
+@font-face {
+    font-family: 'Forza';
+    src: url('forza/Forza-Thin.ttf');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forza';
+    src: url('forza/Forza-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forza';
+    src: url('forza/Forza-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forza Book';
+    src: url('forza/Forza-Book.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forza';
+    src: url('forza/Forza-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forza';
+    src: url('forza/Forza-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* Tungsten fonts */
+
+@font-face {
+    font-family: 'Tungsten';
+    src: url('tungston/Tungsten-Light.otf');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tungsten';
+    src: url('tungston/Tungsten-Medium.otf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tungsten';
+    src: url('tungston/Tungsten-Semibold.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tungsten';
+    src: url('tungston/Tungsten-Bold.otf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tungsten';
+    src: url('tungston/Tungsten-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* Vitesse fonts */
+
+@font-face {
+    font-family: 'Vitesse';
+    src: url('vitesse/Vitesse-Light.otf');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vitesse';
+    src: url('vitesse/Vitesse-Medium.otf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vitesse';
+    src: url('vitesse/Vitesse-Bold.otf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vitesse';
+    src: url('vitesse/Vitesse-Book.otf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vitesse';
+    src: url('vitesse/Vitesse-Black.otf');
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* muli font starts here */
+
+
+
+@font-face {
+    font-family: 'Muli';
+    src: url('muli/Muli-ExtraLight.ttf');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('muli/Muli-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('muli/Muli.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('muli/Muli-SemiBold.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('muli/Muli-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('muli/Muli-ExtraBold.ttf');
+    font-weight: 900;
+    font-style: normal;
+}

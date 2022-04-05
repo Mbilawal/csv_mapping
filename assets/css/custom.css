@@ -1,0 +1,53 @@
+@charset "UTF-8";
+.disabled {
+    pointer-events: none;
+    /* for "disabled" effect */
+    opacity: 0.75;
+    background: #eff0f6;
+}
+.custom-datepicker-input{
+	font-size: 13px;
+    color: #5867dd;
+    font-weight: 700;
+    padding: 0px !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    height: max-content;
+}
+.custom-datepicker-input-arrow{
+	margin: -15px 15px;
+    float: right;
+    color: #5867dd;
+}
+span.selection{
+    height: calc(1.5em + 1rem + 2px) !important;
+    font-size: 0.875rem;
+    line-height: 1.5 !important; 
+    border-radius: 5px !important;
+}
+.select2-selection__arrow{
+    top: 40%;
+}
+.select2-container--default .select2-selection--multiple, .select2-container--default .select2-selection--single{
+    border-radius: 5px !important;
+}
+.bg-grey-light {
+    background-color:#ebedf2 !important;
+    font-size: 11px !important;
+}
+.kt-callout--warning {
+    background-color: rgba(255, 184, 34, 0.3) !important;
+}
+.kt-callout--info {
+    background-color: rgba(85, 120, 235, 0.3) !important;
+}
+.kt-callout--danger {
+    background-color: rgba(253, 57, 122, 0.3) !important;
+}
+.kt-callout--success {
+    background-color: rgba(29, 201, 183, 0.3) !important;
+}
+thead th, thead tr th, thead tr td {
+    text-transform: capitalize !important;
+}

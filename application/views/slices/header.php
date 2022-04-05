@@ -58,7 +58,7 @@ $urI = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http
 							</a>
 						</li>
 						<li class="kt-menu__item" aria-haspopup="true">
-							<a href="<?php echo SURL; ?>login/logout" class="kt-menu__link ">
+							<a href="<?php echo SURL; ?>login/log_out" class="kt-menu__link ">
 								<i class="kt-menu__link-icon fa fa-sign-out"></i>
 								<span class="kt-menu__link-text">Logout</span>
 							</a>

@@ -67,10 +67,11 @@
                                                                     <option value="email">Email</option>
                                                                     <option value="first_name">First Name</option>
                                                                     <option value="last_name">Last Name</option>
+                                                                    <option value="address">Address</option>
+                                                                    <option value="postal_code">Postal Code</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        
                                                     </li>
                                                     <?php
                                                     }

@@ -60,21 +60,4 @@ class Dashboard extends CI_Controller {
 		
 	}//End get_product_graphs
 
-
-	public function upload_final_csv_records_cron()
-	{
-		$this->mod_dashboard->lead_insert_from_csv_final();
-
-		echo 1;
-		exit;
-	}
-
-
-	public function upload_final_csv_cron()
-	{
-		$this->mod_dashboard->lead_insert_temp_csv();
-
-		echo 1;
-		exit;
-	}
 }

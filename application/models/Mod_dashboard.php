@@ -105,7 +105,6 @@ class mod_dashboard extends CI_Model
 
                 //Check Ignore Field
                 if($lead_fields[$i] !="0" && $lead_fields[$i] !=""){
-
                     $fields_names_arr[] = $lead_fields[$i];
                     $fields_index_arr[] = $i;
                 }
@@ -113,7 +112,6 @@ class mod_dashboard extends CI_Model
             
             
             for($i=1; $i<= $arrayCount; $i++){
-
                 if($i != 1){
 
                     $DataInSheet_arr = array_values($allDataInSheet[$i]);
@@ -140,21 +138,28 @@ class mod_dashboard extends CI_Model
                         }elseif($name_arr[0] =="last_name" && $DataInSheet_arr[$key] !=""){
                             $DataInSheet_arr[$key] = str_replace(' ', '', $DataInSheet_arr[$key]);
                             $ins_temp_data['last_name'] = (string) $DataInSheet_arr[$key];
+                        }elseif($name_arr[0] =="postal_code" && $DataInSheet_arr[$key] !=""){
+                            $DataInSheet_arr[$key] = str_replace(' ', '', $DataInSheet_arr[$key]);
+                            $ins_temp_data['postal_code'] = (string) $DataInSheet_arr[$key];
+                        }elseif($name_arr[0] =="address" && $DataInSheet_arr[$key] !=""){
+                            $ins_temp_data['address'] = (string) $DataInSheet_arr[$key];
                         }else{
                             // $DataInSheet_arr[$key] = str_replace(' ', '', $DataInSheet_arr[$key]);
                             $ins_temp_data['email']      = (string) '';
                             $ins_temp_data['home_phone'] = (string) '';
                             $ins_temp_data['first_name'] = (string) '';
                             $ins_temp_data['last_name']  = (string) '';
+                            $ins_temp_data['address']  = (string) '';
+                            $ins_temp_data['postal_code']  = (string) '';
                         }
                     }
 
                     $ins_temp_data['record_processed']=0;
 
-                    if($ins_temp_data['home_phone']!="" || $ins_temp_data['email']!=""){
+                    // if($ins_temp_data['home_phone']!="" || $ins_temp_data['email']!=""){
                         //Insert Temp Record
-                        $this->db->insert('cc_temp_csv_data', $ins_temp_data);
-                    }
+                    $this->db->insert('cc_temp_csv_data', $ins_temp_data);
+                    // }
 
                 }
             }
@@ -199,6 +204,8 @@ class mod_dashboard extends CI_Model
             $lead_email         = $result_arr[$i]['email'];
             $lead_data          = $result_arr[$i]['home_phone'];
             $lead_first_name    = $result_arr[$i]['first_name'];
+            $lead_address       = $result_arr[$i]['address'];
+            $lead_postal_code   = $result_arr[$i]['postal_code'];
             $lead_last_name     = $result_arr[$i]['last_name'];
             $temp_id            = $result_arr[$i]['id'];
             $csv_id             = $result_arr[$i]['csv_id'];
@@ -231,6 +238,18 @@ class mod_dashboard extends CI_Model
             }else{
                 $ins_data['last_name'] = (string) '';
             }
+
+            if($lead_address !=""){
+                $ins_data['address'] = (string) stripcslashes(trim($lead_address));
+            }else{
+                $ins_data['address'] = (string) '';
+            }
+
+            if($lead_postal_code !=""){
+                $ins_data['postal_code'] = (string) stripcslashes(trim($lead_postal_code));
+            }else{
+                $ins_data['postal_code'] = (string) '';
+            }
         
             $duplicate_status= '0';
             $parent_id = 0;
@@ -247,28 +266,22 @@ class mod_dashboard extends CI_Model
 
                 /**Get API**/
                 $curl = curl_init();
-                $postData = array(
-                    'email' => $ins_data['email'],
-                    'mobile' => $ins_data['home_phone']
-                );
-
                 curl_setopt_array($curl, array(
-                  CURLOPT_URL => 'https://android.bluejhil.com/api/test.php',
+                  CURLOPT_URL => "https://epc.opendatacommunities.org/api/v1/domestic/search?address=1+Vere+Road&postcode=DL128AD",
                   CURLOPT_RETURNTRANSFER => true,
-                  CURLOPT_ENCODING => '',
+                  CURLOPT_ENCODING => "",
                   CURLOPT_MAXREDIRS => 10,
-                  CURLOPT_TIMEOUT => 0,
-                  CURLOPT_FOLLOWLOCATION => true,
+                  CURLOPT_TIMEOUT => 30,
                   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                  CURLOPT_CUSTOMREQUEST => 'POST',
-                  CURLOPT_POSTFIELDS => $postData,
+                  CURLOPT_CUSTOMREQUEST => "GET",
                   CURLOPT_HTTPHEADER => array(
-                        // "Content-Type: application/json",
-                        'Authorization: Basic '. base64_encode("e8d08f651b5664a7f443ba8:Goodday")
-                    ),
+                    "accept: application/json",
+                    "authorization: Basic cHJpbmNldmFzaEBnbWFpbC5jb206NWEwZjBlMDk4Yzg3MzYyNzA4ZTk2NmZiMzM4NDY2ZjUwMmMzYjQ5Mw=="
+                  ),
                 ));
 
                 $response = curl_exec($curl);
+                $err = curl_error($curl);
                 curl_close($curl);
 
                 $res_arr = json_decode($response,true);
@@ -278,12 +291,29 @@ class mod_dashboard extends CI_Model
 
                     $api_res_arr = $api_response[0];
 
-                    $ins_data['status'] = $api_res_arr['status'];
-                    $ins_data['rating'] = $api_res_arr['rating'];
-                    $ins_data['available'] = $api_res_arr['available'];
+                    $ins_data['current_energy_rating']     = $api_res_arr['current-energy-rating'];
+                    $ins_data['current_energy_efficiency'] = $api_res_arr['current-energy-efficiency'];
+                    $ins_data['property_type']             = $api_res_arr['property-type'];
+                    $ins_data['built_form']                = $api_res_arr['built-form'];
+                    $ins_data['lodgement_date']            = $api_res_arr['lodgement-date'];
+                    $ins_data['walls_description']         = $api_res_arr['walls-description'];
+                    $ins_data['roof_description']          = $api_res_arr['roof-description'];
+                    $ins_data['mainheat_description']      = $api_res_arr['mainheat-description'];
+                    $ins_data['floor_description']         = $api_res_arr['floor-description'];
+                    $ins_data['tenure']                    = $api_res_arr['tenure'];
 
+                }else{
+                    $ins_data['current_energy_rating']     = "No EPC";
+                    $ins_data['current_energy_efficiency'] = "";
+                    $ins_data['property_type']             = "";
+                    $ins_data['built_form']                = "";
+                    $ins_data['lodgement_date']            = "";
+                    $ins_data['walls_description']         = "";
+                    $ins_data['roof_description']          = "";
+                    $ins_data['mainheat_description']      = "";
+                    $ins_data['floor_description']         = "";
+                    $ins_data['tenure']                    = "";
                 }
-                
                 /**END Get API**/ 
 
                 //Insert the record into the database.

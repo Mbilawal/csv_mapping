@@ -53,7 +53,7 @@ $urI = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http
 						</li>
 						<li class="kt-menu__item <?php echo ($urI == SURL.'csv') ? ('kt-menu__item--active') : (''); ?>" aria-haspopup="true">
 							<a href="<?php echo SURL; ?>csv" class="kt-menu__link ">
-								<i class="kt-menu__link-icon fa fa-desktop"></i>
+								<i class="kt-menu__link-icon fa fa-file"></i>
 								<span class="kt-menu__link-text">CSV</span>
 							</a>
 						</li>

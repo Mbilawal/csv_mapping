@@ -453,5 +453,27 @@ class mod_dashboard extends CI_Model
 
     }//End get_client_campaigns_graphs
 
+
+    //get_csv_upload_contacts
+    public function get_csv_upload_contacts($csv_id){
+
+        $get_record = $this->db->query("SELECT COUNT(id) as total_record FROM cc_temp_csv_data WHERE record_processed=1 ");
+        $total_record = $get_record->row_array();
+
+        return $total_record['total_record'];
+
+    }//End get_csv_upload_contacts
+
+
+    //get_csv_pending_contacts
+    public function get_csv_pending_contacts($csv_id){
+
+        $get_record = $this->db->query("SELECT COUNT(id) as total_record FROM cc_temp_csv_data WHERE record_processed=1 ");
+        $total_record = $get_record->row_array();
+
+        return $total_record['total_record'];
+
+    }//End get_csv_pending_contacts
+
 }
 ?>

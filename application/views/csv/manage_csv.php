@@ -45,6 +45,8 @@
 					<thead>
 						<th>Name</th>
 						<th>Total Recipant</th>
+						<th>Pending Contacts</th>
+						<th>Successfull Contacts</th>
 						<th>Created Date</th>
 						<th>Action</th>
 					</thead>
@@ -57,6 +59,12 @@
 									</td>
 									<td class="icon_row_icon">
 										<?php echo $value['total_csv_records']; ?>	
+									</td>
+									<td class="icon_row_icon">
+										<?php echo get_csv_pending_contacts($value['id']); ?>	
+									</td>
+									<td class="icon_row_icon">
+										<?php echo get_csv_upload_contacts($value['id']); ?>	
 									</td>
 									<td class="icon_row_icon">
 										<?php echo $value['created_date']; ?>	

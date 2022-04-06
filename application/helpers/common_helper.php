@@ -48,6 +48,27 @@ if (!function_exists('get_sidebar_details')) {
 	}
 }
 
+if (!function_exists('get_csv_upload_contacts')) {
+	function get_csv_upload_contacts($csv_id) {
+		$CI = get_instance();
+		// Mod Common for Menus... 
+		$CI->load->model('mod_dashboard');
+		$count = $CI->mod_dashboard->get_csv_upload_contacts($csv_id);		
+		return $count;
+	}
+}
+
+
+if (!function_exists('get_csv_pending_contacts')) {
+	function get_csv_pending_contacts($csv_id) {
+		$CI = get_instance();
+		// Mod Common for Menus... 
+		$CI->load->model('mod_dashboard');
+		$count = $CI->mod_dashboard->get_csv_pending_contacts($csv_id);		
+		return $count;
+	}
+}
+
 if (!function_exists('verify_login')) {
 	function verify_login()
     {
